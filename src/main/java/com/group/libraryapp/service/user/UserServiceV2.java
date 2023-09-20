@@ -19,7 +19,7 @@ public class UserServiceV2 {
         this.userRepository = userRepository;
     }
 
-    @Transactional // 함수가 시작될 때, start transaction을 함 -> 함수가 예외 없이 잘 끝났으면 commit, 문제가 있으면 rollback
+    @Transactional // 함수가 시작될 때, start transaction을 함 -> 함수가 예외 없이 잘 끝났으면 commit, 문제가 있으면 rollback /  IOException은 Checked Exception이므로 롤백이 일어나지 않음
     public void saveUser(UserCreateRequest request) {
         userRepository.save(new User(request.getName(), request.getAge()));
     }
